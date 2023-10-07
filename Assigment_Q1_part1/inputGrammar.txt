@@ -1,0 +1,10 @@
+line 
+line assignment exp exp2 exp3 term
+identifier number + - * / % ^ ( ) exit ; print = 
+line -> assignment ; | exit ; | print exp ; | line assignment ; | line print exp ; | line exit ;
+assignment -> identifier = exp
+exp -> exp2 | exp + exp2 | exp - exp2
+exp2 -> exp3 | exp2 * exp3 | exp2 % exp3 | exp2 / exp3          
+exp3 -> term | exp3 ^ term
+term -> number | ( exp ) | identifier
+

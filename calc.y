@@ -16,8 +16,9 @@ void updateSymbolVal(char symbol, double val);
 %token exit_command
 %token <num> number
 %token <id> identifier
-%type <num> line exp exp2 exp3 term 
+%type <num> exp exp2 exp3 term 
 %type <id> assignment
+%type <num,id> line
 
 %%
 
@@ -41,7 +42,7 @@ exp    	: exp2                  {$$ = $1;}
 
 exp2    : exp3                  {$$ = $1;}
        	| exp2 '*' exp3          {$$ = $1 * $3;}
-       	| exp2 '%' exp3          {$$ = (int)$1 % (int)$3;}
+       	| exp2 '%' exp3          {$$ = fmod($1,$3);}
        	| exp2 '/' exp3          {$$ = $1 / $3;}
        	;
 
